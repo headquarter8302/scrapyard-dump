@@ -5,6 +5,9 @@ on:
   - cron: 0 0 * * *
   workflow_dispatch:
 
+env:
+  ITER_COUNT: 261
+
 jobs:
   fetch-and-dump:
     runs-on: ubuntu-latest
@@ -18,7 +21,7 @@ jobs:
 
     - name: Fetch level dump
       run: |
-        for ((i=1; i<10; i++)); do
+        for ((i = 1; i < ${{ env.ITER_COUNT }}; i++)); do
         curl "https://mee6.xyz/api/plugins/levels/leaderboard/304570106904576001?page=$i" >> dump.json
         done
 
