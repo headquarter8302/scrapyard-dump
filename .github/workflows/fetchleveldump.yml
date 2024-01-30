@@ -1,0 +1,31 @@
+name: Fetch and dump levels
+
+on:
+  schedule:
+  - cron: 0 0 * * *
+  workflow_dispatch:
+
+jobs:
+  fetch-and-dump:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Remove previous dump
+      run: "rm dump.json"
+
+    - name: Fetch level dump
+      run: |
+        for ((i=1; i<10; i++)); do
+        curl "https://mee6.xyz/api/plugins/levels/leaderboard/304570106904576001?page=$i" >> dump.json
+        done
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add dump.json
+        git commit -m "Update dump.json" || echo "Source is same as repo"
+        git push
