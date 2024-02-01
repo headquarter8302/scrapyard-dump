@@ -7,6 +7,7 @@ on:
 
 env:
   ITER_COUNT: 261
+  WAIT: 1m
 
 jobs:
   fetch-and-dump:
@@ -23,7 +24,7 @@ jobs:
       run: |
         for ((i = 1; i < ${{ env.ITER_COUNT }}; i++)); do
         curl "https://mee6.xyz/api/plugins/levels/leaderboard/304570106904576001?page=$i" >> dump.json
-        sleep 5m
+        sleep ${{ env.WAIT }}
         done
 
     - name: Commit and push changes
