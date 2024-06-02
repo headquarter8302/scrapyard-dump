@@ -7,7 +7,7 @@ on:
 
 env:
   ITER_COUNT: 261
-  WAIT: 1m
+  WAIT: 30s
 
 jobs:
   fetch-and-dump:
