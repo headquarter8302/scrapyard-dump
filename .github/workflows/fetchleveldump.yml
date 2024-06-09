@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  ITER_COUNT: 261
+  ITER_COUNT: 300
   WAIT: 30s
 
 jobs:
