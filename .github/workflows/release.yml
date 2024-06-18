@@ -25,3 +25,4 @@ jobs:
         with:
           artifacts: "dump.json"
           body: "Dumped on: ${{ env.DATE }}"
+          tag: "weekly"
