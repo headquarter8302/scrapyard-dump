@@ -23,7 +23,7 @@ jobs:
     - name: Fetch level dump
       run: |
         for ((i = 0; i < ${{ env.ITER_COUNT }}; i++)); do
-        curl "https://mee6.xyz/api/plugins/levels/leaderboard/304570106904576001?page=$i" >> dump.json
+        curl --retry 5 --retry-delay 10 --connect-timeout 30 "https://mee6.xyz/api/plugins/levels/leaderboard/304570106904576001?page=$i" >> dump.json
         sleep ${{ env.WAIT }}
         done
 
