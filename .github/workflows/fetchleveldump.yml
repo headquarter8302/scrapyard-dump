@@ -33,6 +33,7 @@ jobs:
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
+        git pull
         git add dump.json
         git commit -m "Update dump.json" || echo "Source is same as repo"
         git push
