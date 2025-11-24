@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Remove previous dump
       run: "rm dump.json || echo 'No file to remove'"
